@@ -41,7 +41,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #install node
-nvm install 14.17.3
+nvm install 16.13.1
 
 #install docker
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
