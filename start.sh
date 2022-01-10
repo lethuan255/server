@@ -1,5 +1,7 @@
 #!/bin/sh
 # set -e 
+. ~/.nvm/nvm.sh
+
 ROOT_PATH="$PWD"
 FOLDER_APPS_PATH="$PWD/.data/server/apps"
 
@@ -23,7 +25,7 @@ sudo apt install php8.0-mbstring -y
 cd ~
 curl -sS https://getcomposer.org/installer -o composer-setup.php
 HASH=`curl -sS https://composer.github.io/installer.sig`
-php -r "if (hash_file('SHA384', 'composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 cd $ROOT_PATH
 
@@ -64,16 +66,20 @@ sudo chmod -R 777 .
 
 rm -rf $FOLDER_APPS_PATH/spreed $FOLDER_APPS_PATH/tasks $FOLDER_APPS_PATH/calendar $FOLDER_APPS_PATH/deck $FOLDER_APPS_PATH/rickdocuments
 
-#wait
-git clone https://github.com/kma-custom-nextcloud/spreed.git $FOLDER_APPS_PATH/spreed
-cd $FOLDER_APPS_PATH/spreed
-make dev-setup
-make build-js
+nvm use 15.14.0
 
 #wait
 git clone https://github.com/kma-custom-nextcloud/tasks.git $FOLDER_APPS_PATH/tasks
 cd $FOLDER_APPS_PATH/tasks
 make
+
+nvm use 14.14.0
+
+#wait
+git clone https://github.com/kma-custom-nextcloud/spreed.git $FOLDER_APPS_PATH/spreed
+cd $FOLDER_APPS_PATH/spreed
+make dev-setup
+make build-js
 
 #wait
 git clone https://github.com/kma-custom-nextcloud/calendar.git $FOLDER_APPS_PATH/calendar
