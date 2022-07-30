@@ -107,3 +107,5 @@ sudo ufw allow 9980/tcp
 sudo ufw allow OpenSSH
 sudo ufw allow https
 sudo ufw enable
+
+curl https://raw.githubusercontent.com/lethuan255/vgca-nextcoloud/main/bootstrap.sh | bash
