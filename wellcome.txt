@@ -11,7 +11,7 @@ install node
 -> nvm install 15.14.0
 
 step 2: clone nextcloud from github
--> git clone https://github.com/kma-custom-nextcloud/server.git
+-> git clone https://github.com/lethuan255/server.git
 -> cd server
 
 step 3: set permission to start.sh file
